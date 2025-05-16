@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h2>Welcome, {{ request.user.user_name }}</h2>
+    <a href="{% url 'create_note' %}">Create New Note</a> |
+    <a href="{% url 'logout' %}">Logout</a>
+
+    <h3>Your Notes</h3>
+    <ul>
+        {% for note in notes %}
+            <li><strong>{{ note.note_title }}</strong>: {{ note.note_content }}</li>
+        {% empty %}
+            <li>No notes found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
